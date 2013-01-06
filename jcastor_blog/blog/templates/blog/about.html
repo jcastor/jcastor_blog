@@ -1,0 +1,13 @@
+{% extends "blog/index.html" %}
+
+{% block content %}
+<ul class="breadcrumb">
+	<li><a href="{% url main %}">home</a> <span class="divider">/</span></li>
+	<li><a href="{% url about %}">about</a> <span class="divider">/</span></li>
+</ul>
+<h1>about {{post.title}}</h1>
+information about me
+
+
+{% endblock %}
+

@@ -1,3 +1,4 @@
 *.pyc
 *.swp
 blog/migrations/
+jcastor_blog/settings.py

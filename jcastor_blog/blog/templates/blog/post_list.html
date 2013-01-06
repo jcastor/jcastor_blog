@@ -1,0 +1,41 @@
+{% extends "blog/index.html" %}
+
+{% block content %}
+
+<ul class="breadcrumb">
+	<li><a href="{% url main %}">home</a> <span class="divider">/</span></li>
+	<li><a href="{% url main %}">blog</a> <span class="divider">/</span></li>
+</ul>
+<h1>blog</h1>
+
+
+	<ul class="nav nav-list">
+		<li class="divider"></li>
+	</ul>
+{% for post in post_list %}
+	<h3><a href="{% url post_detail_view post.id %}">{{post.title}}</a></h3></br>
+    {{post.body|linebreaks}}
+	<ul class="nav nav-list">
+		<li class="divider"></li>
+	</ul>
+{% endfor %}
+{% if is_paginated %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+{% endif %}
+
+{% endblock %}
+

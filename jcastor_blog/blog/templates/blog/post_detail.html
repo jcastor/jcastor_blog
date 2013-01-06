@@ -1,0 +1,15 @@
+{% extends "blog/index.html" %}
+
+{% block content %}
+<ul class="breadcrumb">
+	<li><a href="{% url main %}">home</a> <span class="divider">/</span></li>
+	<li><a href="{% url main %}">blog</a> <span class="divider">/</span></li>
+	<li><a href="{% url post_detail_view post.id %}">{{post.title}}</a> <span class="divider">/</span></li>
+</ul>
+<h1>blog: {{post.title}} <small>{{post.created}}</small></h1>
+{{post.body}}
+
+
+
+{% endblock %}
+

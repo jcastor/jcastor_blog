@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jason Castor's Blog / Personal Site</title>
+    <!-- Bootstrap -->
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+ 
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+        table {
+                table-layout:fixed;
+                word-wrap: break-word;
+        }
+    </style>
+  </head>
+  <body>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js"></script>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+                <ul class="nav">
+                <li class="active">
+                        <a class="brand" href="{% url main %}">Jason Castor</a>
+                </li>
+                <li><a href="{% url main %}">blog</a></li>
+                <li><a href="{% url about %}">about</a></li>
+                <li><a href="{% url about %}">resume</a></li>
+                <li><a href="http://github.com/jcastor">github</a></li>
+        </div>
+      </div>
+    </div>
+   <div class="container">
+        <div class="row">
+        {% block content %}{% endblock %}
+        </div>
+  </div>
+  </body>
+</html>
+
