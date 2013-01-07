@@ -1,13 +1,21 @@
 {% extends "blog/index.html" %}
 
 {% block content %}
+{% load disqus_tags %}
+{% set_disqus_identifier "blogentry_" post.id %}
+{% set_disqus_url "http://jason-castor.com/blog/post/" post.id %}
+
 <ul class="breadcrumb">
 	<li><a href="{% url main %}">home</a> <span class="divider">/</span></li>
 	<li><a href="{% url main %}">blog</a> <span class="divider">/</span></li>
 	<li><a href="{% url post_detail_view post.id %}">{{post.title}}</a> <span class="divider">/</span></li>
 </ul>
 <h1>blog: {{post.title}} <small>{{post.created}}</small></h1>
-{{post.body}}
+{{post.body|safe|linebreaks}}
+<ul class="nav nav-list">
+	<li class="divider"></li>
+</ul>
+{% disqus_show_comments %}
 
 
 

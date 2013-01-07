@@ -1,7 +1,7 @@
 {% extends "blog/index.html" %}
 
 {% block content %}
-
+{% load disqus_tags %}
 <ul class="breadcrumb">
 	<li><a href="{% url main %}">home</a> <span class="divider">/</span></li>
 	<li><a href="{% url main %}">blog</a> <span class="divider">/</span></li>
@@ -13,11 +13,16 @@
 		<li class="divider"></li>
 	</ul>
 {% for post in post_list %}
-	<h3><a href="{% url post_detail_view post.id %}">{{post.title}}</a></h3></br>
-    {{post.body|linebreaks}}
+	<h3><a href="{% url post_detail_view post.id %}">{{post.title}}</a> <small>{{post.created}}</small></h3>
+    {{post.body|safe|linebreaks}}
 	<ul class="nav nav-list">
 		<li class="divider"></li>
 	</ul>
+	<div class="container">
+	<p class="muted credit" style="text-align:right">
+		<a href="{% url post_detail_view post.id %}#disqus_thread">Comments</a>
+	</p>
+	</div>
 {% endfor %}
 {% if is_paginated %}
     <div class="pagination">
