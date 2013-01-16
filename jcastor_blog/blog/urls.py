@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import DetailView, ListView, TemplateView
 from blog.models import Post
+from django.views.generic.simple import direct_to_template
 urlpatterns = patterns('blog.views',
 	url(r'^$', ListView.as_view(queryset=Post.objects.order_by("-created"), context_object_name="post_list", paginate_by=5,), name="main"),
 	url(r'blog/post/(?P<pk>\d+)/$', DetailView.as_view(model=Post,),name="post_detail_view"),
