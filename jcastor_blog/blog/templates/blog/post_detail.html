@@ -1,5 +1,9 @@
 {% extends "blog/index.html" %}
 
+{% block title %}
+<title>{{post.title}} </title>
+{% endblock %}
+
 {% block content %}
 {% load disqus_tags %}
 {% set_disqus_identifier "blogentry_" post.id %}
